@@ -1,0 +1,54 @@
+
+/* Class = "UILabel"; text = "B"; ObjectID = "0h0-4K-xS6"; */
+"0h0-4K-xS6.text" = "B";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "AZR-Wq-w78"; */
+"AZR-Wq-w78.text" = "Unit";
+
+/* Class = "UILabel"; text = "Output"; ObjectID = "B7Y-3w-qbY"; */
+"B7Y-3w-qbY.text" = "Output";
+
+/* Class = "UILabel"; text = "Operation:"; ObjectID = "H5P-3m-aoW"; */
+"H5P-3m-aoW.text" = "Operation:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "J2f-vy-Hz9"; */
+"J2f-vy-Hz9.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "JKQ-mv-vO7"; */
+"JKQ-mv-vO7.text" = "Unit";
+
+/* Class = "UILabel"; text = "Input 2"; ObjectID = "Q9C-cE-y23"; */
+"Q9C-cE-y23.text" = "Input 2";
+
+/* Class = "UIButton"; configuration.title = "History"; ObjectID = "SV1-SR-a3F"; */
+"SV1-SR-a3F.configuration.title" = "History";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SV1-SR-a3F"; */
+"SV1-SR-a3F.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Input 1"; ObjectID = "cqu-J9-4HX"; */
+"cqu-J9-4HX.text" = "Input 1";
+
+/* Class = "UILabel"; text = "Unit"; ObjectID = "gRK-zr-vRX"; */
+"gRK-zr-vRX.text" = "Unit";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "gfP-Bs-6wU"; */
+"gfP-Bs-6wU.normalTitle" = "+";
+
+/* Class = "UIButton"; selectedTitle = "-"; ObjectID = "gfP-Bs-6wU"; */
+"gfP-Bs-6wU.selectedTitle" = "-";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "i1i-Vw-aRY"; */
+"i1i-Vw-aRY.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Inter-Unit Calculator"; ObjectID = "jUe-fW-skC"; */
+"jUe-fW-skC.title" = "Inter-Unit Calculator";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "lAk-Jm-7aT"; */
+"lAk-Jm-7aT.text" = "0.0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "n9t-El-zg6"; */
+"n9t-El-zg6.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "yYk-yc-MyH"; */
+"yYk-yc-MyH.text" = "A";
