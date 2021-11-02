@@ -50,6 +50,7 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="ashowUnitsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rcs-a0-hFA"/>
+                                                    <action selector="operationWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="q4u-Ju-E59"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -91,6 +92,7 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="bshowUnitsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ctV-My-usf"/>
+                                                    <action selector="operationWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="zfi-VU-I2Z"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -131,6 +133,7 @@
                                                     <color key="baseForegroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
+                                                    <action selector="operationWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="xvx-Vn-6iK"/>
                                                     <action selector="outshowUnitsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n79-6y-Slg"/>
                                                 </connections>
                                             </button>
@@ -156,6 +159,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="operationWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ndH-Aw-aXj"/>
+                                </connections>
                             </textField>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0Z-eV-rc4">
                                 <rect key="frame" x="0.0" y="160" width="414" height="86"/>
@@ -201,15 +207,20 @@
                             <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KE-2f-mfw">
                                 <rect key="frame" x="0.0" y="574" width="414" height="86"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAk-Jm-7aT">
-                                        <rect key="frame" x="191" y="29" width="33" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAk-Jm-7aT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lAk-Jm-7aT" secondAttribute="bottom" id="BWn-md-QO2"/>
+                                    <constraint firstItem="lAk-Jm-7aT" firstAttribute="top" secondItem="4KE-2f-mfw" secondAttribute="top" id="Ebn-lK-Q0P"/>
+                                    <constraint firstAttribute="trailing" secondItem="lAk-Jm-7aT" secondAttribute="trailing" id="Sh4-sI-Wvk"/>
+                                    <constraint firstItem="lAk-Jm-7aT" firstAttribute="leading" secondItem="4KE-2f-mfw" secondAttribute="leading" id="xrV-tY-05v"/>
+                                </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-dC-SWi">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
@@ -219,6 +230,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="operationWithSender:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="mGJ-hq-ruN"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

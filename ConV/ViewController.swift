@@ -25,7 +25,18 @@ class ViewController: UIViewController, UITextViewDelegate {
     let aDrop = DropDown()
     let bDrop = DropDown()
     let outDrop = DropDown()
-    let lengthUnit = ["Kilometer", "Meter", "Centimeter", "Micrometer", "Mile", "Yard", "Foot", "Inch"]
+    let lengthUnit = ["kilometer", "meter", "millimeter", "mile", "yard", "foot", "inch"]
+    
+    enum DistanceUnit {
+        case kilometer
+        case meter
+        case millimeter
+        case mile
+        case yard
+        case inch
+        
+        static let getAllUnits = [kilometer, meter, millimeter, mile, yard, inch]
+    }
     
     
     @IBAction func didTapButton(){
@@ -60,6 +71,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         aDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
+            print(index)
             self.aUnit.text = lengthUnit[index]
         }
         //B
@@ -83,6 +95,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         outDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
             self.outUnit.text = lengthUnit[index]
+            
         }
         
         
@@ -97,7 +110,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
-        
+        //+/- behavior
         if sender.tag == 1{
             if operation.isSelected{
                 operation.isSelected = false
@@ -108,6 +121,89 @@ class ViewController: UIViewController, UITextViewDelegate {
         }
         
     }
+    @IBAction func operation(  sender: Any) {
+        let tA = textA.text ?? ""
+        let tB = textB.text ?? ""
+        let varA = Double(tA) ?? 0.0
+        let varB = Double(tB) ?? 0.0
+        var unitFrom = DistanceUnit.meter
+        var unitTo = DistanceUnit.meter
+        print(aDrop.index)
+        
+        switch aUnit.text{
+        case "kilometer":
+            unitFrom = .kilometer
+        case "meter":
+            unitFrom = .meter
+        case "millimeter":
+            unitFrom = .millimeter
+        case "mile":
+            unitFrom = .mile
+        case "yard":
+            unitFrom = .yard
+        default:
+            break
+        }
+        switch outUnit.text{
+        case "kilometer":
+            unitTo = .kilometer
+        case "meter":
+            unitTo = .meter
+        case "millimeter":
+            unitTo = .millimeter
+        case "mile":
+            unitTo = .mile
+        case "yard":
+            unitTo = .yard
+        default:
+            break
+        }
+         
+        var out = convertFrom(unit: unitFrom, op: varA)
+        out = convertTo(unit: unitTo, op: out)
+        print("the output is \(out)\n")
+        resultLabel.text = "\(out)"
+    }
+    
+    func convertFrom(unit: DistanceUnit, op: Double) -> Double{
+        var out = 0.0
+        switch unit {
+        case .kilometer:
+            out = op*1000
+        case .meter:
+            out = op
+        case .yard:
+            out = op/1.094
+        case .inch:
+            out = op/39.37
+        case .mile:
+            out = op*1609.344
+        case .millimeter:
+            out = op/1000
+        }
+        print("conver from \(op) \(unit) to \(out) meter\n")
+        return out
+    }
+    func convertTo(unit: DistanceUnit, op: Double) -> Double{
+        var out = 0.0
+        switch unit {
+        case .kilometer:
+            out = op/1000
+        case .meter:
+            out = op
+        case .yard:
+            out = op*1.094
+        case .inch:
+            out = op*39.37
+        case .mile:
+            out = op/1609.344
+        case .millimeter:
+            out = op*1000
+        }
+        print("conver from \(op) meter to \(out) \(unit)\n")
+        return out
+    }
+    
     /*
     @objc func didTapTopItem() {
         menu.show()
