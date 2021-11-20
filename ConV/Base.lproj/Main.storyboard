@@ -374,7 +374,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uli-YG-duj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the first input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uli-YG-duj">
                                 <rect key="frame" x="20" y="334" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="AXZ-kq-Kk1"/>
@@ -467,7 +467,7 @@
                                     <constraint firstItem="JqB-0X-9Df" firstAttribute="leading" secondItem="Sca-fE-Wds" secondAttribute="trailing" constant="8" symbolic="YES" id="zbk-pc-ZJ9"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-62-zfx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the second input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-62-zfx">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Ygd-OM-lin"/>
@@ -511,7 +511,16 @@
                             <constraint firstItem="7IM-fm-i4X" firstAttribute="top" secondItem="Uli-YG-duj" secondAttribute="bottom" constant="20" id="y2K-ds-r6T"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Temperature" id="qbN-uQ-slI"/>
+                    <navigationItem key="navigationItem" title="Temperature" id="qbN-uQ-slI">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="cZ0-uw-xIJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KbC-Sm-U4a">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tempADropDown" destination="1TO-jO-tfo" id="4dJ-cJ-6tf"/>
                         <outlet property="tempAUnit" destination="i0A-l5-ffr" id="FxI-X5-hxN"/>
@@ -661,7 +670,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJj-tq-Avv">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the first input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJj-tq-Avv">
                                 <rect key="frame" x="20" y="334" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="e3B-se-eTJ"/>
@@ -754,7 +763,7 @@
                                     <constraint firstItem="ccI-Cn-ybz" firstAttribute="leading" secondItem="tYF-ea-Ft7" secondAttribute="leading" constant="10" id="zkG-Oy-dIW"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AEu-t9-tWN">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the second input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AEu-t9-tWN">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="36Q-oa-qIz"/>
@@ -798,7 +807,16 @@
                             <constraint firstItem="AEu-t9-tWN" firstAttribute="leading" secondItem="UJj-tq-Avv" secondAttribute="leading" id="vq4-6f-nrv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Volume(imperial)" id="NZD-PT-rgM"/>
+                    <navigationItem key="navigationItem" title="Volume(imperial)" id="NZD-PT-rgM">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="V2w-3q-rjD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HFk-kd-cPR">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="VolumeADropDown" destination="dgd-u8-7va" id="5L6-qG-m0U"/>
                         <outlet property="VolumeAUnit" destination="Cme-pO-nfI" id="saU-QV-hOK"/>
@@ -857,7 +875,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="ashowUnitsWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="gEz-tg-kAw"/>
-                                                    <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="primaryActionTriggered" id="ddv-aq-W2O"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -899,7 +916,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="bshowUnitsWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="KPO-Xx-fIa"/>
-                                                    <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="YYh-Rg-F7z"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -940,7 +956,6 @@
                                                     <color key="baseForegroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="touchCancel" id="XjC-pb-y6D"/>
                                                     <action selector="outshowUnitsWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="gDQ-Ow-lbZ"/>
                                                 </connections>
                                             </button>
@@ -951,7 +966,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-Ei-XZP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the first input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-Ei-XZP">
                                 <rect key="frame" x="20" y="334" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="CZI-Tc-epo"/>
@@ -959,9 +974,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="editingDidEnd" id="pmv-OV-cqL"/>
-                                </connections>
                             </textField>
                             <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nV6-rs-V7J">
                                 <rect key="frame" x="0.0" y="160" width="414" height="86"/>
@@ -1031,6 +1043,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.0" green="0.47559760620000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="spm-Cq-jlc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1044,7 +1059,7 @@
                                     <constraint firstItem="52z-Dx-qk2" firstAttribute="top" secondItem="MEI-9b-MEc" secondAttribute="top" id="ytI-bN-0vd"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4V-d0-IEj">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the second input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4V-d0-IEj">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ufZ-Hk-Vpd"/>
@@ -1052,9 +1067,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="GhA-9T-yST" eventType="editingDidEnd" id="2lY-vR-Cxa"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zEq-2p-9h7"/>
@@ -1091,18 +1103,27 @@
                             <constraint firstItem="zEq-2p-9h7" firstAttribute="trailing" secondItem="S4V-d0-IEj" secondAttribute="trailing" constant="20" id="xew-W0-mTl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Weight" id="Lbb-Gl-Qzw"/>
+                    <navigationItem key="navigationItem" title="Weight" id="Lbb-Gl-Qzw">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="Cm3-ji-Xxj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="riF-2J-ywD">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="aDropDown" destination="2TL-h1-aVF" id="nPw-JU-Wb8"/>
-                        <outlet property="aUnit" destination="o2P-Xe-9jh" id="EUF-tO-u8C"/>
-                        <outlet property="bDropDown" destination="XMu-Wo-bKe" id="V9X-h4-6TI"/>
-                        <outlet property="bUnit" destination="sq1-Th-Anl" id="thY-P1-VT2"/>
-                        <outlet property="operation" destination="FKI-xQ-eRC" id="xZh-by-ydH"/>
-                        <outlet property="outDropDown" destination="6TH-oR-Y7k" id="LJF-44-T2b"/>
-                        <outlet property="outUnit" destination="MDT-F8-oId" id="yt7-Nl-Kkq"/>
-                        <outlet property="resultLabel" destination="52z-Dx-qk2" id="Ic9-8F-7Q6"/>
-                        <outlet property="textA" destination="xX1-Ei-XZP" id="TgD-KZ-n8N"/>
-                        <outlet property="textB" destination="S4V-d0-IEj" id="hf7-yl-FFl"/>
+                        <outlet property="WeightADropDown" destination="2TL-h1-aVF" id="RTg-v1-wE4"/>
+                        <outlet property="WeightAUnit" destination="o2P-Xe-9jh" id="gij-BE-2l0"/>
+                        <outlet property="WeightBDropDown" destination="XMu-Wo-bKe" id="dA8-Za-vYo"/>
+                        <outlet property="WeightBUnit" destination="sq1-Th-Anl" id="Qt9-yX-Jds"/>
+                        <outlet property="WeightOperation" destination="FKI-xQ-eRC" id="8IE-tg-rjd"/>
+                        <outlet property="WeightOutDropDown" destination="6TH-oR-Y7k" id="vqq-ui-h3w"/>
+                        <outlet property="WeightOutUnit" destination="MDT-F8-oId" id="rtX-Uv-K5c"/>
+                        <outlet property="WeightResultLabel" destination="52z-Dx-qk2" id="ryc-DZ-Nch"/>
+                        <outlet property="WeightTextA" destination="xX1-Ei-XZP" id="OE5-vg-8MX"/>
+                        <outlet property="WeightTextB" destination="S4V-d0-IEj" id="wvT-fK-BFk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqQ-p6-7UK" sceneMemberID="firstResponder"/>
@@ -1150,7 +1171,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="ashowUnitsWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="0C6-RG-c5x"/>
-                                                    <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="primaryActionTriggered" id="obv-MM-2SZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1192,7 +1212,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="bshowUnitsWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="rRp-G8-ylW"/>
-                                                    <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="3cv-vk-auk"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1233,7 +1252,6 @@
                                                     <color key="baseForegroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="touchCancel" id="Ljb-Uc-6Nv"/>
                                                     <action selector="outshowUnitsWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="4aG-WA-1CX"/>
                                                 </connections>
                                             </button>
@@ -1244,7 +1262,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNX-f6-ZdQ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the first input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNX-f6-ZdQ">
                                 <rect key="frame" x="20" y="334" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="FHY-Xk-jYP"/>
@@ -1252,9 +1270,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="editingDidEnd" id="aKq-JZ-Hhu"/>
-                                </connections>
                             </textField>
                             <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ign-65-V2L">
                                 <rect key="frame" x="0.0" y="160" width="414" height="86"/>
@@ -1324,6 +1339,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.0" green="0.47559760620000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="FYn-fD-3uT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1337,7 +1355,7 @@
                                     <constraint firstItem="0U5-vZ-Jsg" firstAttribute="leading" secondItem="9t7-m2-MTk" secondAttribute="trailing" constant="8" symbolic="YES" id="yhD-nj-vBA"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2AI-hY-LJ4">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the second input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2AI-hY-LJ4">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="2bg-cc-EHh"/>
@@ -1345,9 +1363,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="0qQ-Qf-mIr" eventType="editingDidEnd" id="kKd-9v-ChI"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WG9-k9-0Pv"/>
@@ -1384,7 +1399,16 @@
                             <constraint firstItem="2Vq-Oe-j5M" firstAttribute="leading" secondItem="FRT-Ns-g1J" secondAttribute="leading" id="yW9-DV-1X2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Speed" id="uVB-wz-iEZ"/>
+                    <navigationItem key="navigationItem" title="Speed" id="uVB-wz-iEZ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="PlR-f1-IE0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dJg-QW-OhR">
+                                <rect key="frame" x="-33" y="-15" width="92" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aDropDown" destination="FRT-Ns-g1J" id="IQS-eJ-l8K"/>
                         <outlet property="aUnit" destination="uci-1e-K5J" id="sJI-NU-9Wk"/>
@@ -1534,7 +1558,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0k-bn-DeH">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the first input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0k-bn-DeH">
                                 <rect key="frame" x="20" y="334" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="KZW-Mz-YXX"/>
@@ -1628,7 +1652,7 @@
                                     <constraint firstItem="tLp-AG-FTH" firstAttribute="top" secondItem="Bua-fT-Y1a" secondAttribute="top" constant="9" id="yFC-07-nXW"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qWZ-b9-F4S">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the second input" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qWZ-b9-F4S">
                                 <rect key="frame" x="20" y="442" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="Spz-BD-pz0"/>
@@ -1672,7 +1696,18 @@
                             <constraint firstItem="qWZ-b9-F4S" firstAttribute="leading" secondItem="RGY-IS-IXe" secondAttribute="leading" constant="20" id="ywB-Z2-Br4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Length" id="Orf-gf-sUh"/>
+                    <navigationItem key="navigationItem" title="Length" leftItemsSupplementBackButton="YES" id="Orf-gf-sUh">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="omU-zq-O1g">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Saq-lY-TOP">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aDropDown" destination="hMG-Uz-1Lu" id="yRY-I2-6yF"/>
                         <outlet property="aUnit" destination="CEw-3m-Zg9" id="oAX-w3-xAJ"/>
@@ -1696,6 +1731,7 @@
         <image name="gray" width="300" height="300"/>
         <image name="list.bullet.rectangle.portrait" catalog="system" width="115" height="128"/>
         <image name="square-rounded-64" width="64" height="64"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="sum" catalog="system" width="102" height="128"/>
         <systemColor name="labelColor">

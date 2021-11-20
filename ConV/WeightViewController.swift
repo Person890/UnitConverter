@@ -7,96 +7,89 @@
 import DropDown
 import UIKit
 
-//length ViewController
+//Weight ViewController
 class WeightViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var operation: UIButton!
-    @IBOutlet weak var aDropDown: UIView!
-    @IBOutlet weak var aUnit: UILabel!
-    @IBOutlet weak var bDropDown: UIView!
-    @IBOutlet weak var bUnit: UILabel!
-    @IBOutlet weak var outDropDown: UIView!
-    @IBOutlet weak var outUnit: UILabel!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var WeightOperation: UIButton!
+    @IBOutlet weak var WeightADropDown: UIView!
+    @IBOutlet weak var WeightAUnit: UILabel!
+    @IBOutlet weak var WeightBDropDown: UIView!
+    @IBOutlet weak var WeightBUnit: UILabel!
+    @IBOutlet weak var WeightOutDropDown: UIView!
+    @IBOutlet weak var WeightOutUnit: UILabel!
+    @IBOutlet weak var WeightResultLabel: UILabel!
     
-    @IBOutlet var textA: UITextField!
-    @IBOutlet var textB: UITextField!
+    @IBOutlet var WeightTextA: UITextField!
+    @IBOutlet var WeightTextB: UITextField!
     
     
-    let aDrop = DropDown()
-    let bDrop = DropDown()
-    let outDrop = DropDown()
-    let lengthUnit = ["kilometer", "meter", "millimeter", "mile", "yard", "foot", "inch"]
+    let WeightADrop = DropDown()
+    let WeightBDrop = DropDown()
+    let WeightOutDrop = DropDown()
+    let weightUnit = ["metric ton", "kilogram", "gram", "pound", "ounce"]
     
-    enum DistanceUnit {
-        case kilometer
-        case meter
-        case millimeter
-        case mile
-        case yard
-        case foot
-        case inch
+    enum WeightUnit {
+        case ton
+        case kilogram
+        case gram
+        case pound
+        case ounce
         
-        static let getAllUnits = [kilometer, meter, millimeter, mile, yard, foot, inch]
+        static let getAllUnits = [ton, kilogram, gram, pound, ounce]
     }
     
-    
-    @IBAction func didTapButton(){
-        let vc = storyboard?.instantiateViewController(identifier: "green_vc") as! GreenViewController
-        present(vc, animated: true)
-    }
     
     @IBAction func ashowUnits(  sender:Any) {
-        aDrop.show()
+        WeightADrop.show()
     }
     @IBAction func bshowUnits(  sender:Any) {
-        bDrop.show()
+        WeightBDrop.show()
     }
     @IBAction func outshowUnits(  sender:Any) {
-        outDrop.show()
+        WeightOutDrop.show()
     }
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         //keyboard
-        textA.keyboardType = UIKeyboardType.decimalPad
-        textB.keyboardType = UIKeyboardType.decimalPad
+        WeightTextA.keyboardType = UIKeyboardType.decimalPad
+        WeightTextB.keyboardType = UIKeyboardType.decimalPad
         
         
         //A
-        aDrop.anchorView = aDropDown
-        aDrop.dataSource = lengthUnit
-        aDrop.topOffset = CGPoint(x: 0, y:-(aDrop.anchorView?.plainView.bounds.height)!)
-        aDrop.bottomOffset = CGPoint(x: 0, y:(aDrop.anchorView?.plainView.bounds.height)!)
-        aDrop.direction = .bottom
+        WeightADrop.anchorView = WeightADropDown
+        WeightADrop.dataSource = weightUnit
+        WeightADrop.topOffset = CGPoint(x: 0, y:-(WeightADrop.anchorView?.plainView.bounds.height)!)
+        WeightADrop.bottomOffset = CGPoint(x: 0, y:(WeightADrop.anchorView?.plainView.bounds.height)!)
+        WeightADrop.direction = .bottom
         
-        aDrop.selectionAction = { [unowned self]
+        WeightADrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
             print(index)
-            self.aUnit.text = lengthUnit[index]
+            self.WeightAUnit.text = weightUnit[index]
         }
         //B
-        bDrop.anchorView = bDropDown
-        bDrop.dataSource = lengthUnit
-        bDrop.topOffset = CGPoint(x: 0, y:-(bDrop.anchorView?.plainView.bounds.height)!)
-        bDrop.bottomOffset = CGPoint(x: 0, y:(bDrop.anchorView?.plainView.bounds.height)!)
-        bDrop.direction = .bottom
+        WeightBDrop.anchorView = WeightBDropDown
+        WeightBDrop.dataSource = weightUnit
+        WeightBDrop.topOffset = CGPoint(x: 0, y:-(WeightBDrop.anchorView?.plainView.bounds.height)!)
+        WeightBDrop.bottomOffset = CGPoint(x: 0, y:(WeightBDrop.anchorView?.plainView.bounds.height)!)
+        WeightBDrop.direction = .bottom
         
-        bDrop.selectionAction = { [unowned self]
+        WeightBDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
-            self.bUnit.text = lengthUnit[index]
+            self.WeightBUnit.text = weightUnit[index]
         }
         //output
-        outDrop.anchorView = outDropDown
-        outDrop.dataSource = lengthUnit
-        outDrop.topOffset = CGPoint(x: 0, y:-(outDrop.anchorView?.plainView.bounds.height)!)
-        outDrop.bottomOffset = CGPoint(x: 0, y:(outDrop.anchorView?.plainView.bounds.height)!)
-        outDrop.direction = .top
+        WeightOutDrop.anchorView = WeightOutDropDown
+        WeightOutDrop.dataSource = weightUnit
+        WeightOutDrop.topOffset = CGPoint(x: 0, y:-(WeightOutDrop.anchorView?.plainView.bounds.height)!)
+        WeightOutDrop.bottomOffset = CGPoint(x: 0, y:(WeightOutDrop.anchorView?.plainView.bounds.height)!)
+        WeightOutDrop.direction = .top
         
-        outDrop.selectionAction = { [unowned self]
+        WeightOutDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
-            self.outUnit.text = lengthUnit[index]
+            self.WeightOutUnit.text = weightUnit[index]
             
         }
         
@@ -107,109 +100,128 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         self.view.endEditing(true)
     }
     func textFieldShouldReturn(  textFirld: UITextField) -> Bool{
-        textA.resignFirstResponder()
+        WeightTextA.resignFirstResponder()
         return (true)
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
         //+/- behavior
         if sender.tag == 1{
-            if operation.isSelected{
-                operation.isSelected = false
+            if WeightOperation.isSelected{
+                WeightOperation.isSelected = false
             }
             else{
-                operation.isSelected = true
+                WeightOperation.isSelected = true
             }
         }
         
     }
     @IBAction func operation(  sender: Any) {
-        let tA = textA.text ?? ""
-        let tB = textB.text ?? ""
+        let tA = WeightTextA.text ?? ""
+        let tB = WeightTextB.text ?? ""
         let varA = Double(tA) ?? 0.0
         let varB = Double(tB) ?? 0.0
-        var unitFrom = DistanceUnit.meter
-        var unitTo = DistanceUnit.meter
-        print(aDrop.index)
+        var unitAFrom = WeightUnit.kilogram
+        var unitBFrom = WeightUnit.kilogram
+        var unitTo = WeightUnit.kilogram
+        print(WeightADrop.index)
         
-        switch aUnit.text{
-        case "kilometer":
-            unitFrom = .kilometer
-        case "meter":
-            unitFrom = .meter
-        case "millimeter":
-            unitFrom = .millimeter
-        case "mile":
-            unitFrom = .mile
-        case "yard":
-            unitFrom = .yard
+        switch WeightAUnit.text{
+        case "metric ton":
+            unitAFrom = .ton
+        case "kilogram":
+            unitAFrom = .kilogram
+        case "gram":
+            unitAFrom = .gram
+        case "pound":
+            unitAFrom = .pound
+        case "ounce":
+            unitAFrom = .ounce
         default:
             break
         }
-        switch outUnit.text{
-        case "kilometer":
-            unitTo = .kilometer
-        case "meter":
-            unitTo = .meter
-        case "millimeter":
-            unitTo = .millimeter
-        case "mile":
-            unitTo = .mile
-        case "yard":
-            unitTo = .yard
+        switch WeightBUnit.text{
+        case "metric ton":
+            unitBFrom = .ton
+        case "kilogram":
+            unitBFrom = .kilogram
+        case "gram":
+            unitBFrom = .gram
+        case "pound":
+            unitBFrom = .pound
+        case "ounce":
+            unitBFrom = .ounce
         default:
             break
         }
-         
-        var out = convertFrom(unit: unitFrom, op: varA)
+        switch WeightOutUnit.text{
+        case "metric ton":
+            unitTo = .ton
+        case "kilogram":
+            unitTo = .kilogram
+        case "gram":
+            unitTo = .gram
+        case "pound":
+            unitTo = .pound
+        case "ounce":
+            unitTo = .ounce
+        default:
+            break
+        }
+        
+        //convert to kg
+        let outA = convertFrom(unit: unitAFrom, op: varA)
+        let outB = convertFrom(unit: unitBFrom, op: varB)
+        var out = operate(op1: outA, op2: outB, add: WeightOperation.isSelected)
+        //convert from kg
         out = convertTo(unit: unitTo, op: out)
         
-        
-        
         print("the output is \(out)\n")
-        resultLabel.text = "\(out)"
+        WeightResultLabel.text = "\(out)"
     }
     
-    func convertFrom(unit: DistanceUnit, op: Double) -> Double{
+    func convertFrom(unit: WeightUnit, op: Double) -> Double{
         var out = 0.0
         switch unit {
-        case .kilometer:
+        case .ton:
             out = op*1000
-        case .meter:
+        case .kilogram:
             out = op
-        case .yard:
-            out = op/1.094
-        case .foot:
-            out = op/3.281
-        case .inch:
-            out = op/39.37
-        case .mile:
-            out = op*1609.344
-        case .millimeter:
+        case .gram:
             out = op/1000
+        case .pound:
+            out = op/2.205
+        case .ounce:
+            out = op/35.274
         }
-        print("conver from \(op) \(unit) to \(out) meter\n")
+        print("conver from \(op) \(unit) to \(out) kg\n")
         return out
     }
-    func convertTo(unit: DistanceUnit, op: Double) -> Double{
+    func convertTo(unit: WeightUnit, op: Double) -> Double{
         var out = 0.0
         switch unit {
-        case .kilometer:
+        case .ton:
             out = op/1000
-        case .meter:
+        case .kilogram:
             out = op
-        case .yard:
-            out = op*1.094
-        case .foot:
-            out = op*3.281
-        case .inch:
-            out = op*39.37
-        case .mile:
-            out = op/1609.344
-        case .millimeter:
+        case .gram:
             out = op*1000
+        case .pound:
+            out = op*2.205
+        case .ounce:
+            out = op*35.274
         }
-        print("conver from \(op) meter to \(out) \(unit)\n")
+        print("conver from \(op) kg to \(out) \(unit)\n")
+        return out
+    }
+    func operate(op1: Double, op2: Double, add: Bool) -> Double{
+        var out = 0.0
+        if(!add){
+            out = op1 + op2
+        }
+        else{
+            out = op1 - op2
+        }
         return out
     }
     
