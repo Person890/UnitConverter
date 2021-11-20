@@ -117,17 +117,28 @@ class TemperatureViewController: UIViewController {
         let tB = tempTextB.text ?? ""
         let varA = Double(tA) ?? 0.0
         let varB = Double(tB) ?? 0.0
-        var unitFrom = TemperatureUnit.celsius
+        var unitAFrom = TemperatureUnit.celsius
+        var unitBFrom = TemperatureUnit.celsius
         var unitTo = TemperatureUnit.celsius
         print(tempADrop.index)
         
         switch tempAUnit.text{
         case "celsius":
-            unitFrom = .celsius
+            unitAFrom = .celsius
         case "fahrenheit":
-            unitFrom = .fahrenheit
+            unitAFrom = .fahrenheit
         case "kelvin":
-            unitFrom = .kelvin
+            unitAFrom = .kelvin
+        default:
+            break
+        }
+        switch tempBUnit.text{
+        case "celsius":
+            unitBFrom = .celsius
+        case "fahrenheit":
+            unitBFrom = .fahrenheit
+        case "kelvin":
+            unitBFrom = .kelvin
         default:
             break
         }
@@ -142,10 +153,11 @@ class TemperatureViewController: UIViewController {
             break
         }
         //convert to degree celsius
-        var out = convertFrom(unit: unitFrom, op: varA)
+        let outA = convertFrom(unit: unitAFrom, op: varA)
+        let outB = convertFrom(unit: unitBFrom, op: varB)
         //convert from degree celsius
+        var out = operate(op1: outA, op2: outB, add: tempOperation.isSelected)
         out = convertTo(unit: unitTo, op: out)
-        
         
         
         print("the output is \(out)\n")
@@ -176,6 +188,16 @@ class TemperatureViewController: UIViewController {
             out = op + 273.15
         }
         print("conver from \(op) degree celsius to \(out) \(unit)\n")
+        return out
+    }
+    func operate(op1: Double, op2: Double, add: Bool) -> Double{
+        var out = 0.0
+        if(!add){
+            out = op1 + op2
+        }
+        else{
+            out = op1 - op2
+        }
         return out
     }
     

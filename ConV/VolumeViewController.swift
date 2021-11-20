@@ -10,23 +10,23 @@ import UIKit
 //length ViewController
 class VolumeViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var operation: UIButton!
-    @IBOutlet weak var aDropDown: UIView!
-    @IBOutlet weak var aUnit: UILabel!
-    @IBOutlet weak var bDropDown: UIView!
-    @IBOutlet weak var bUnit: UILabel!
-    @IBOutlet weak var outDropDown: UIView!
-    @IBOutlet weak var outUnit: UILabel!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var VolumeOperation: UIButton!
+    @IBOutlet weak var VolumeADropDown: UIView!
+    @IBOutlet weak var VolumeAUnit: UILabel!
+    @IBOutlet weak var VolumeBDropDown: UIView!
+    @IBOutlet weak var VolumeBUnit: UILabel!
+    @IBOutlet weak var VolumeOutDropDown: UIView!
+    @IBOutlet weak var VolumeOutUnit: UILabel!
+    @IBOutlet weak var volumeResultLabel: UILabel!
     
-    @IBOutlet var textA: UITextField!
-    @IBOutlet var textB: UITextField!
+    @IBOutlet var volumeTextA: UITextField!
+    @IBOutlet var volumeTextB: UITextField!
     
     
-    let aDrop = DropDown()
-    let bDrop = DropDown()
-    let outDrop = DropDown()
-    let volumeUnit = ["imperial liquid gallon", "imperial quart", "imperial pint", "imperial cup", "imperial fluid ounce", "imperial tablespoon", "imperial teaspoon", "liter"]
+    let volumeADrop = DropDown()
+    let volumeBDrop = DropDown()
+    let volumeOutDrop = DropDown()
+    let volumeUnit = ["liquid gallon", "quart", "pint", "cup", "fluid ounce", "tablespoon", "teaspoon", "liter"]
     
     enum VolumeUnit {
         case gallon
@@ -42,62 +42,57 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    @IBAction func didTapButton(){
-        let vc = storyboard?.instantiateViewController(identifier: "green_vc") as! GreenViewController
-        present(vc, animated: true)
-    }
-    
     @IBAction func ashowUnits(  sender:Any) {
-        aDrop.show()
+        volumeADrop.show()
     }
     @IBAction func bshowUnits(  sender:Any) {
-        bDrop.show()
+        volumeBDrop.show()
     }
     @IBAction func outshowUnits(  sender:Any) {
-        outDrop.show()
+        volumeOutDrop.show()
     }
     
     override func viewDidLoad(){
         super.viewDidLoad()
         
         //keyboard
-        textA.keyboardType = UIKeyboardType.decimalPad
-        textB.keyboardType = UIKeyboardType.decimalPad
+        volumeTextA.keyboardType = UIKeyboardType.decimalPad
+        volumeTextB.keyboardType = UIKeyboardType.decimalPad
         
         
         //A
-        aDrop.anchorView = aDropDown
-        aDrop.dataSource = volumeUnit
-        aDrop.topOffset = CGPoint(x: 0, y:-(aDrop.anchorView?.plainView.bounds.height)!)
-        aDrop.bottomOffset = CGPoint(x: 0, y:(aDrop.anchorView?.plainView.bounds.height)!)
-        aDrop.direction = .bottom
+        volumeADrop.anchorView = VolumeADropDown
+        volumeADrop.dataSource = volumeUnit
+        volumeADrop.topOffset = CGPoint(x: 0, y:-(volumeADrop.anchorView?.plainView.bounds.height)!)
+        volumeADrop.bottomOffset = CGPoint(x: 0, y:(volumeADrop.anchorView?.plainView.bounds.height)!)
+        volumeADrop.direction = .bottom
         
-        aDrop.selectionAction = { [unowned self]
+        volumeADrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
             print(index)
-            self.aUnit.text = volumeUnit[index]
+            self.VolumeAUnit.text = volumeUnit[index]
         }
         //B
-        bDrop.anchorView = bDropDown
-        bDrop.dataSource = volumeUnit
-        bDrop.topOffset = CGPoint(x: 0, y:-(bDrop.anchorView?.plainView.bounds.height)!)
-        bDrop.bottomOffset = CGPoint(x: 0, y:(bDrop.anchorView?.plainView.bounds.height)!)
-        bDrop.direction = .bottom
+        volumeBDrop.anchorView = VolumeBDropDown
+        volumeBDrop.dataSource = volumeUnit
+        volumeBDrop.topOffset = CGPoint(x: 0, y:-(volumeBDrop.anchorView?.plainView.bounds.height)!)
+        volumeBDrop.bottomOffset = CGPoint(x: 0, y:(volumeBDrop.anchorView?.plainView.bounds.height)!)
+        volumeBDrop.direction = .bottom
         
-        bDrop.selectionAction = { [unowned self]
+        volumeBDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
-            self.bUnit.text = volumeUnit[index]
+            self.VolumeBUnit.text = volumeUnit[index]
         }
         //output
-        outDrop.anchorView = outDropDown
-        outDrop.dataSource = volumeUnit
-        outDrop.topOffset = CGPoint(x: 0, y:-(outDrop.anchorView?.plainView.bounds.height)!)
-        outDrop.bottomOffset = CGPoint(x: 0, y:(outDrop.anchorView?.plainView.bounds.height)!)
-        outDrop.direction = .top
+        volumeOutDrop.anchorView = VolumeOutDropDown
+        volumeOutDrop.dataSource = volumeUnit
+        volumeOutDrop.topOffset = CGPoint(x: 0, y:-(volumeOutDrop.anchorView?.plainView.bounds.height)!)
+        volumeOutDrop.bottomOffset = CGPoint(x: 0, y:(volumeOutDrop.anchorView?.plainView.bounds.height)!)
+        volumeOutDrop.direction = .top
         
-        outDrop.selectionAction = { [unowned self]
+        volumeOutDrop.selectionAction = { [unowned self]
             (index: Int, item: String) in
-            self.outUnit.text = volumeUnit[index]
+            self.VolumeOutUnit.text = volumeUnit[index]
             
         }
         
@@ -108,65 +103,86 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         self.view.endEditing(true)
     }
     func textFieldShouldReturn(  textFirld: UITextField) -> Bool{
-        textA.resignFirstResponder()
+        volumeTextA.resignFirstResponder()
         return (true)
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
         //+/- behavior
         if sender.tag == 1{
-            if operation.isSelected{
-                operation.isSelected = false
+            if VolumeOperation.isSelected{
+                VolumeOperation.isSelected = false
             }
             else{
-                operation.isSelected = true
+                VolumeOperation.isSelected = true
             }
         }
         
     }
     @IBAction func operation(  sender: Any) {
-        let tA = textA.text ?? ""
-        let tB = textB.text ?? ""
+        let tA = volumeTextA.text ?? ""
+        let tB = volumeTextB.text ?? ""
         let varA = Double(tA) ?? 0.0
         let varB = Double(tB) ?? 0.0
-        var unitFrom = VolumeUnit.cup
+        var unitAFrom = VolumeUnit.cup
+        var unitBFrom = VolumeUnit.cup
         var unitTo = VolumeUnit.cup
-        print(aDrop.index)
+        print(volumeADrop.index)
         
-        switch aUnit.text{
-        case "imperial liquid gallon":
-            unitFrom = .gallon
-        case "imperial quart":
-            unitFrom = .quart
-        case "imperial pint":
-            unitFrom = .pint
-        case "imperial cup":
-            unitFrom = .cup
-        case "imperial fluid ounce":
-            unitFrom = .ounce
-        case "imperial tablespoon":
-            unitFrom = .tablespoon
-        case "imperial teaspoon":
-            unitFrom = .teaspoon
+        switch VolumeAUnit.text{
+        case "liquid gallon":
+            unitAFrom = .gallon
+        case "quart":
+            unitAFrom = .quart
+        case "pint":
+            unitAFrom = .pint
+        case "cup":
+            unitAFrom = .cup
+        case "fluid ounce":
+            unitAFrom = .ounce
+        case "tablespoon":
+            unitAFrom = .tablespoon
+        case "teaspoon":
+            unitAFrom = .teaspoon
         case "liter":
-            unitFrom = .liter
+            unitAFrom = .liter
         default:
             break
         }
-        switch outUnit.text{
-        case "imperial liquid gallon":
+        switch VolumeBUnit.text{
+        case "liquid gallon":
+            unitBFrom = .gallon
+        case "quart":
+            unitBFrom = .quart
+        case "pint":
+            unitBFrom = .pint
+        case "cup":
+            unitBFrom = .cup
+        case "fluid ounce":
+            unitBFrom = .ounce
+        case "tablespoon":
+            unitBFrom = .tablespoon
+        case "teaspoon":
+            unitBFrom = .teaspoon
+        case "liter":
+            unitBFrom = .liter
+        default:
+            break
+        }
+        switch VolumeOutUnit.text{
+        case "liquid gallon":
             unitTo = .gallon
-        case "imperial quart":
+        case "quart":
             unitTo = .quart
-        case "imperial pint":
+        case "pint":
             unitTo = .pint
-        case "imperial cup":
+        case "cup":
             unitTo = .cup
-        case "imperial fluid ounce":
+        case "fluid ounce":
             unitTo = .ounce
-        case "imperial tablespoon":
+        case "tablespoon":
             unitTo = .tablespoon
-        case "imperial teaspoon":
+        case "teaspoon":
             unitTo = .teaspoon
         case "liter":
             unitTo = .liter
@@ -175,14 +191,16 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         }
         
         //convert to cup
-        var out = convertFrom(unit: unitFrom, op: varA)
+        let outA = convertFrom(unit: unitAFrom, op: varA)
+        let outB = convertFrom(unit: unitBFrom, op: varB)
+        var out = operate(op1: outA, op2: outB, add: VolumeOperation.isSelected)
         //convert from cup
         out = convertTo(unit: unitTo, op: out)
         
         
         
         print("the output is \(out)\n")
-        resultLabel.text = "\(out)"
+        volumeResultLabel.text = "\(out)"
     }
     
     func convertFrom(unit: VolumeUnit, op: Double) -> Double{
@@ -230,6 +248,16 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
             out = op/3.52
         }
         print("conver from \(op) cup to \(out) \(unit)\n")
+        return out
+    }
+    func operate(op1: Double, op2: Double, add: Bool) -> Double{
+        var out = 0.0
+        if(!add){
+            out = op1 + op2
+        }
+        else{
+            out = op1 - op2
+        }
         return out
     }
     

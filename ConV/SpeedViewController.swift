@@ -8,7 +8,7 @@ import DropDown
 import UIKit
 
 //length ViewController
-class LengthViewController: UIViewController, UITextViewDelegate {
+class SpeedViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var operation: UIButton!
     @IBOutlet weak var aDropDown: UIView!
@@ -40,6 +40,11 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         static let getAllUnits = [kilometer, meter, millimeter, mile, yard, foot, inch]
     }
     
+    
+    @IBAction func didTapButton(){
+        let vc = storyboard?.instantiateViewController(identifier: "green_vc") as! GreenViewController
+        present(vc, animated: true)
+    }
     
     @IBAction func ashowUnits(  sender:Any) {
         aDrop.show()
@@ -123,37 +128,21 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         let tB = textB.text ?? ""
         let varA = Double(tA) ?? 0.0
         let varB = Double(tB) ?? 0.0
-        var unitAFrom = DistanceUnit.meter
-        var unitBFrom = DistanceUnit.meter
-        
+        var unitFrom = DistanceUnit.meter
         var unitTo = DistanceUnit.meter
         print(aDrop.index)
         
         switch aUnit.text{
         case "kilometer":
-            unitAFrom = .kilometer
+            unitFrom = .kilometer
         case "meter":
-            unitAFrom = .meter
+            unitFrom = .meter
         case "millimeter":
-            unitAFrom = .millimeter
+            unitFrom = .millimeter
         case "mile":
-            unitAFrom = .mile
+            unitFrom = .mile
         case "yard":
-            unitAFrom = .yard
-        default:
-            break
-        }
-        switch bUnit.text{
-        case "kilometer":
-            unitBFrom = .kilometer
-        case "meter":
-            unitBFrom = .meter
-        case "millimeter":
-            unitBFrom = .millimeter
-        case "mile":
-            unitBFrom = .mile
-        case "yard":
-            unitBFrom = .yard
+            unitFrom = .yard
         default:
             break
         }
@@ -171,10 +160,8 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         default:
             break
         }
-        
-        let outA = convertFrom(unit: unitAFrom, op: varA)
-        let outB = convertFrom(unit: unitBFrom, op: varB)
-        var out = operate(op1: outA, op2: outB, add: operation.isSelected)
+         
+        var out = convertFrom(unit: unitFrom, op: varA)
         out = convertTo(unit: unitTo, op: out)
         
         
@@ -223,16 +210,6 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             out = op*1000
         }
         print("conver from \(op) meter to \(out) \(unit)\n")
-        return out
-    }
-    func operate(op1: Double, op2: Double, add: Bool) -> Double{
-        var out = 0.0
-        if(!add){
-            out = op1 + op2
-        }
-        else{
-            out = op1 - op2
-        }
         return out
     }
     

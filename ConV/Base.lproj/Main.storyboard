@@ -529,10 +529,10 @@
             </objects>
             <point key="canvasLocation" x="3450.7246376811595" y="57.589285714285708"/>
         </scene>
-        <!--Volume-->
+        <!--Volume(imperial)-->
         <scene sceneID="wsF-nj-xxt">
             <objects>
-                <viewController id="qtZ-IZ-xzE" customClass="VolumeViewController" sceneMemberID="viewController">
+                <viewController id="qtZ-IZ-xzE" customClass="VolumeViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gcP-bH-8Io">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -570,7 +570,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="ashowUnitsWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="R7K-mh-XRM"/>
-                                                    <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="primaryActionTriggered" id="P2W-M9-Lyc"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -612,7 +611,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="bshowUnitsWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="HJi-nK-RZg"/>
-                                                    <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="Id5-JC-LVS"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -653,7 +651,6 @@
                                                     <color key="baseForegroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="touchCancel" id="Ol1-LW-ggx"/>
                                                     <action selector="outshowUnitsWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="VFb-xl-8tM"/>
                                                 </connections>
                                             </button>
@@ -672,9 +669,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="editingDidEnd" id="own-68-WfO"/>
-                                </connections>
                             </textField>
                             <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGz-JH-2Np">
                                 <rect key="frame" x="0.0" y="160" width="414" height="86"/>
@@ -744,6 +738,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.0" green="0.47559760620000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="YFs-mX-X6E"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89414946569999998" green="0.89414946569999998" blue="0.89414946569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -765,9 +762,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="operationWithSender:" destination="qtZ-IZ-xzE" eventType="editingDidEnd" id="kBN-HI-VrA"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W7G-D8-Nsn"/>
@@ -804,18 +798,18 @@
                             <constraint firstItem="AEu-t9-tWN" firstAttribute="leading" secondItem="UJj-tq-Avv" secondAttribute="leading" id="vq4-6f-nrv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Volume" id="NZD-PT-rgM"/>
+                    <navigationItem key="navigationItem" title="Volume(imperial)" id="NZD-PT-rgM"/>
                     <connections>
-                        <outlet property="aDropDown" destination="dgd-u8-7va" id="fTl-2Q-3jg"/>
-                        <outlet property="aUnit" destination="Cme-pO-nfI" id="pKV-Vw-2IY"/>
-                        <outlet property="bDropDown" destination="DqK-8A-7ne" id="uXY-gs-ZIf"/>
-                        <outlet property="bUnit" destination="tnM-Ae-FmE" id="Ubg-JK-T8H"/>
-                        <outlet property="operation" destination="uBB-Zh-Aqd" id="UWY-su-Lhm"/>
-                        <outlet property="outDropDown" destination="wcE-0D-1tM" id="IUl-LC-uUb"/>
-                        <outlet property="outUnit" destination="iIQ-ic-yzY" id="btJ-Hl-Kmh"/>
-                        <outlet property="resultLabel" destination="LYg-Xc-76e" id="HGY-PP-BI7"/>
-                        <outlet property="textA" destination="UJj-tq-Avv" id="ScU-pl-JWz"/>
-                        <outlet property="textB" destination="AEu-t9-tWN" id="sz1-aS-2ur"/>
+                        <outlet property="VolumeADropDown" destination="dgd-u8-7va" id="5L6-qG-m0U"/>
+                        <outlet property="VolumeAUnit" destination="Cme-pO-nfI" id="saU-QV-hOK"/>
+                        <outlet property="VolumeBDropDown" destination="DqK-8A-7ne" id="ucH-kj-hLD"/>
+                        <outlet property="VolumeBUnit" destination="tnM-Ae-FmE" id="ot0-Jj-Kfh"/>
+                        <outlet property="VolumeOperation" destination="uBB-Zh-Aqd" id="6sW-1i-W9D"/>
+                        <outlet property="VolumeOutDropDown" destination="wcE-0D-1tM" id="kba-Hn-cGo"/>
+                        <outlet property="VolumeOutUnit" destination="iIQ-ic-yzY" id="wwS-OI-9av"/>
+                        <outlet property="volumeResultLabel" destination="LYg-Xc-76e" id="RHs-F7-KiC"/>
+                        <outlet property="volumeTextA" destination="UJj-tq-Avv" id="dbM-Ld-d9W"/>
+                        <outlet property="volumeTextB" destination="AEu-t9-tWN" id="D47-61-fGL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdO-mJ-aqv" sceneMemberID="firstResponder"/>
@@ -825,7 +819,7 @@
         <!--Weight-->
         <scene sceneID="ngj-HS-Hyr">
             <objects>
-                <viewController id="GhA-9T-yST" customClass="ViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GhA-9T-yST" customClass="WeightViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="evd-qu-5o7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1118,7 +1112,7 @@
         <!--Speed-->
         <scene sceneID="NxA-Yy-Jkt">
             <objects>
-                <viewController id="0qQ-Qf-mIr" customClass="ViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0qQ-Qf-mIr" customClass="SpeedViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PW0-LJ-WBn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1560,7 +1554,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mb0-C4-jHu">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mb0-C4-jHu">
                                         <rect key="frame" x="262" y="17" width="55" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
