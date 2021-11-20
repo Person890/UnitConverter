@@ -7,7 +7,8 @@
 import DropDown
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate {
+//length ViewController
+class LengthViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var operation: UIButton!
     @IBOutlet weak var aDropDown: UIView!
@@ -33,9 +34,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         case millimeter
         case mile
         case yard
+        case foot
         case inch
         
-        static let getAllUnits = [kilometer, meter, millimeter, mile, yard, inch]
+        static let getAllUnits = [kilometer, meter, millimeter, mile, yard, foot, inch]
     }
     
     
@@ -161,6 +163,9 @@ class ViewController: UIViewController, UITextViewDelegate {
          
         var out = convertFrom(unit: unitFrom, op: varA)
         out = convertTo(unit: unitTo, op: out)
+        
+        
+        
         print("the output is \(out)\n")
         resultLabel.text = "\(out)"
     }
@@ -174,6 +179,8 @@ class ViewController: UIViewController, UITextViewDelegate {
             out = op
         case .yard:
             out = op/1.094
+        case .foot:
+            out = op/3.281
         case .inch:
             out = op/39.37
         case .mile:
@@ -193,6 +200,8 @@ class ViewController: UIViewController, UITextViewDelegate {
             out = op
         case .yard:
             out = op*1.094
+        case .foot:
+            out = op*3.281
         case .inch:
             out = op*39.37
         case .mile:
@@ -203,6 +212,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         print("conver from \(op) meter to \(out) \(unit)\n")
         return out
     }
+    
     
     /*
     @objc func didTapTopItem() {
