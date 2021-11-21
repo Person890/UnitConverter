@@ -35,7 +35,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
-            let alert = UIAlertController(title: "Success", message: "The length calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Success", message: "The speed calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
