@@ -16,6 +16,11 @@ class HistoryViewController: UITableViewController {
     //@IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var conversionText: UILabel!
     //@IBOutlet weak var conversionType: UILabel!
+    @IBOutlet weak var editBtn: UIButton!
+    @IBAction func editPressed(_ sender: UIBarButtonItem){
+        self.tableView.isEditing = !self.tableView.isEditing
+        editBtn.isSelected = !editBtn.isSelected
+    }
     
 
     override func viewDidLoad() {
@@ -64,6 +69,20 @@ class HistoryViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print(History.entries.count)
+    }
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){
+        let selectedItem = History.entries[sourceIndexPath.row]
+        History.entries.remove(at: sourceIndexPath.row)
+        History.entries.insert(selectedItem, at: destinationIndexPath.row)
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            History.entries.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
     
 
