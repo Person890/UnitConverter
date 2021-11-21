@@ -36,7 +36,7 @@ class HistoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if History.entries.count == 0{
-            self.tableView.setEmptyMessage("No saved conversions found", UIColor.blue)
+            self.tableView.setEmptyMessage("No saved conversions found", UIColor.gray)
         }
         else{
             self.tableView.restore()
@@ -48,10 +48,14 @@ class HistoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = HistoryTableViewCell()
         let cell = UITableViewCell()
         //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! HistoryTableViewCell
+        //print(History.entries[indexPath.row].getConversion())
+        //print(History.entries[indexPath.row].getType())
         cell.textLabel!.text = History.entries[indexPath.row].getConversion()
-        //cell.conversionType.text = "type"
+        //conversionType.text = History.entries[indexPath.row].getType()
+        //conversionText.text = History.entries[indexPath.row].getConversion()
         //cell.conversionText.text = History.entries[indexPath.row].getConversion()
         //cell.conversionType.text = History.entries[indexPath.row].getType()
         //cell.isUserInteractionEnabled = false

@@ -23,13 +23,25 @@ class WeightViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var WeightTextB: UITextField!
     
     @IBOutlet weak var save: UIButton!
+    
+    var entry = Conversion()
+    func createConversion(){
+        let newEntry = Conversion(type: "Weighterature", op1: WeightTextA.text!, op2: WeightTextB.text!, out: WeightResultLabel.text!, add: WeightOperation.isSelected, unit1: WeightAUnit.text!, unit2: WeightBUnit.text!, unitOut: WeightOutUnit.text!)
+        entry = newEntry
+    }
     @IBAction func saveConversion(  sender:UIButton) {
-        if WeightResultLabel.text != "0.0"{
-            let entry = Conversion(type: "Weighterature", op1: WeightTextA.text!, op2: WeightTextB.text!, out: WeightResultLabel.text!, add: WeightOperation.isSelected, unit1: WeightAUnit.text!, unit2: WeightBUnit.text!, unitOut: WeightOutUnit.text!)
+        if entry.getType() != "null"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
-            //print(History.entries[0].getConversion())
+            let alert = UIAlertController(title: "Success", message: "The length calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "You are trying to save an empty calculation!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -191,6 +203,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         
         print("the output is \(out)\n")
         WeightResultLabel.text = "\(out)"
+        createConversion()
     }
     
     func convertFrom(unit: WeightUnit, op: Double) -> Double{

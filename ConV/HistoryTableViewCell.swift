@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//didnt use this file
 class HistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var conversionType: UILabel!

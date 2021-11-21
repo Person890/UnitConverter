@@ -24,13 +24,25 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
     
     
     @IBOutlet weak var save: UIButton!
+    
+    var entry = Conversion()
+    func createConversion(){
+        let newEntry = Conversion(type: "Length", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
+        entry = newEntry
+    }
     @IBAction func saveConversion(  sender:UIButton) {
-        if resultLabel.text != "0.0"{
-            let entry = Conversion(type: "Length", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
+        if entry.getType() != "null"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
-            //print(History.entries[0].getConversion())
+            let alert = UIAlertController(title: "Success", message: "The length calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "You are trying to save an empty calculation!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -186,6 +198,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         
         print("the output is \(out)\n")
         resultLabel.text = "\(out)"
+        createConversion()
     }
     
     func convertFrom(unit: SpeedUnit, op: Double) -> Double{

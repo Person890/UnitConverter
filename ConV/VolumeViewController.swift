@@ -24,13 +24,25 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
     
     
     @IBOutlet weak var save: UIButton!
+    
+    var entry = Conversion()
+    func createConversion(){
+        let newEntry = Conversion(type: "Volumeerature", op1: volumeTextA.text!, op2: volumeTextB.text!, out: volumeResultLabel.text!, add: VolumeOperation.isSelected, unit1: VolumeAUnit.text!, unit2: VolumeBUnit.text!, unitOut: VolumeOutUnit.text!)
+        entry = newEntry
+    }
     @IBAction func saveConversion(  sender:UIButton) {
-        if volumeResultLabel.text != "0.0"{
-            let entry = Conversion(type: "Volumeerature", op1: volumeTextA.text!, op2: volumeTextB.text!, out: volumeResultLabel.text!, add: VolumeOperation.isSelected, unit1: VolumeAUnit.text!, unit2: VolumeBUnit.text!, unitOut: VolumeOutUnit.text!)
+        if entry.getType() != "null"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
-            //print(History.entries[0].getConversion())
+            let alert = UIAlertController(title: "Success", message: "The length calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "You are trying to save an empty calculation!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -214,6 +226,7 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         
         print("the output is \(out)\n")
         volumeResultLabel.text = "\(out)"
+        createConversion()
     }
     
     func convertFrom(unit: VolumeUnit, op: Double) -> Double{

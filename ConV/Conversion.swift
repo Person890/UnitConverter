@@ -17,6 +17,16 @@ class Conversion{
     let unit2: String
     let unitOut: String
     
+    init(){
+        self.type = "null"
+        self.op1 = "null"
+        self.op2 = "null"
+        self.out = "null"
+        self.add = true
+        self.unit1 = "null"
+        self.unit2 = "null"
+        self.unitOut = "null"
+    }
     init(type: String, op1: String, op2: String, out: String, add: Bool, unit1: String, unit2: String, unitOut: String){
         self.type = type
         self.op1 = op1

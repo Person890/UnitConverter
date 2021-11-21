@@ -21,14 +21,27 @@ class TemperatureViewController: UIViewController {
     @IBOutlet var tempTextA: UITextField!
     @IBOutlet var tempTextB: UITextField!
     
+    
     @IBOutlet weak var save: UIButton!
+    
+    var entry = Conversion()
+    func createConversion(){
+        let newEntry = Conversion(type: "temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
+        History.entries.append(entry)
+        entry = newEntry
+    }
     @IBAction func saveConversion(  sender:UIButton) {
-        if tempResultLabel.text != "0.0"{
-            let entry = Conversion(type: "temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
-            History.entries.append(entry)
+        if entry.getType() != "null"{
             print(entry.getConversion())
             print(History.entries.count)
-            //print(History.entries[0].getConversion())
+            let alert = UIAlertController(title: "Success", message: "The length calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "You are trying to save an empty calculation!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -175,6 +188,7 @@ class TemperatureViewController: UIViewController {
         
         print("the output is \(out)\n")
         tempResultLabel.text = "\(out)"
+        createConversion()
     }
     
     func convertFrom(unit: TemperatureUnit, op: Double) -> Double{
