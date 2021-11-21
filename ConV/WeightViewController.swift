@@ -22,6 +22,17 @@ class WeightViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var WeightTextA: UITextField!
     @IBOutlet var WeightTextB: UITextField!
     
+    @IBOutlet weak var save: UIButton!
+    @IBAction func saveConversion(  sender:UIButton) {
+        if WeightResultLabel.text != "0.0"{
+            let entry = Conversion(type: "Weighterature", op1: WeightTextA.text!, op2: WeightTextB.text!, out: WeightResultLabel.text!, add: WeightOperation.isSelected, unit1: WeightAUnit.text!, unit2: WeightBUnit.text!, unitOut: WeightOutUnit.text!)
+            History.entries.append(entry)
+            print(entry.getConversion())
+            print(History.entries.count)
+            //print(History.entries[0].getConversion())
+        }
+    }
+    
     
     let WeightADrop = DropDown()
     let WeightBDrop = DropDown()
@@ -175,6 +186,8 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         var out = operate(op1: outA, op2: outB, add: WeightOperation.isSelected)
         //convert from kg
         out = convertTo(unit: unitTo, op: out)
+        //round to 3 dec place
+        out = Double(round(1000*out)/1000)
         
         print("the output is \(out)\n")
         WeightResultLabel.text = "\(out)"

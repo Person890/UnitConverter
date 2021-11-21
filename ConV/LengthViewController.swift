@@ -22,6 +22,16 @@ class LengthViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var textA: UITextField!
     @IBOutlet var textB: UITextField!
     
+    @IBOutlet weak var save: UIButton!
+    @IBAction func saveConversion(  sender:UIButton) {
+        if resultLabel.text != "0.0"{
+            let entry = Conversion(type: "Length", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
+            History.entries.append(entry)
+            print(entry.getConversion())
+            print(History.entries.count)
+            //print(History.entries[0].getConversion())
+        }
+    }
     
     let aDrop = DropDown()
     let bDrop = DropDown()
@@ -140,6 +150,10 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             unitAFrom = .mile
         case "yard":
             unitAFrom = .yard
+        case "foot":
+            unitAFrom = .foot
+        case "inch":
+            unitAFrom = .inch
         default:
             break
         }
@@ -154,6 +168,10 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             unitBFrom = .mile
         case "yard":
             unitBFrom = .yard
+        case "foot":
+            unitBFrom = .foot
+        case "inch":
+            unitBFrom = .inch
         default:
             break
         }
@@ -168,14 +186,22 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             unitTo = .mile
         case "yard":
             unitTo = .yard
+        case "foot":
+            unitTo = .foot
+        case "inch":
+            unitTo = .inch
         default:
             break
         }
         
+        //convert to meter
         let outA = convertFrom(unit: unitAFrom, op: varA)
         let outB = convertFrom(unit: unitBFrom, op: varB)
         var out = operate(op1: outA, op2: outB, add: operation.isSelected)
+        //convert from meter
         out = convertTo(unit: unitTo, op: out)
+        //round to 3 dec place
+        out = Double(round(1000*out)/1000)
         
         
         

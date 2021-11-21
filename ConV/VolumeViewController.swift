@@ -23,6 +23,17 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var volumeTextB: UITextField!
     
     
+    @IBOutlet weak var save: UIButton!
+    @IBAction func saveConversion(  sender:UIButton) {
+        if volumeResultLabel.text != "0.0"{
+            let entry = Conversion(type: "Volumeerature", op1: volumeTextA.text!, op2: volumeTextB.text!, out: volumeResultLabel.text!, add: VolumeOperation.isSelected, unit1: VolumeAUnit.text!, unit2: VolumeBUnit.text!, unitOut: VolumeOutUnit.text!)
+            History.entries.append(entry)
+            print(entry.getConversion())
+            print(History.entries.count)
+            //print(History.entries[0].getConversion())
+        }
+    }
+    
     let volumeADrop = DropDown()
     let volumeBDrop = DropDown()
     let volumeOutDrop = DropDown()
@@ -196,6 +207,8 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         var out = operate(op1: outA, op2: outB, add: VolumeOperation.isSelected)
         //convert from cup
         out = convertTo(unit: unitTo, op: out)
+        //round to 3 dec place
+        out = Double(round(1000*out)/1000)
         
         
         

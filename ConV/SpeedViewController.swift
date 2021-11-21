@@ -23,6 +23,18 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var textB: UITextField!
     
     
+    @IBOutlet weak var save: UIButton!
+    @IBAction func saveConversion(  sender:UIButton) {
+        if resultLabel.text != "0.0"{
+            let entry = Conversion(type: "Length", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
+            History.entries.append(entry)
+            print(entry.getConversion())
+            print(History.entries.count)
+            //print(History.entries[0].getConversion())
+        }
+    }
+    
+    
     let aDrop = DropDown()
     let bDrop = DropDown()
     let outDrop = DropDown()
@@ -167,6 +179,8 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         let outB = convertFrom(unit: unitBFrom, op: varB)
         var out = operate(op1: outA, op2: outB, add: operation.isSelected)
         out = convertTo(unit: unitTo, op: out)
+        //round to 3 dec place
+        out = Double(round(1000*out)/1000)
         
         
         

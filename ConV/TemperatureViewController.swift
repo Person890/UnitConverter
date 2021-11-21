@@ -21,6 +21,17 @@ class TemperatureViewController: UIViewController {
     @IBOutlet var tempTextA: UITextField!
     @IBOutlet var tempTextB: UITextField!
     
+    @IBOutlet weak var save: UIButton!
+    @IBAction func saveConversion(  sender:UIButton) {
+        if tempResultLabel.text != "0.0"{
+            let entry = Conversion(type: "temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
+            History.entries.append(entry)
+            print(entry.getConversion())
+            print(History.entries.count)
+            //print(History.entries[0].getConversion())
+        }
+    }
+    
     
     let tempADrop = DropDown()
     let tempBDrop = DropDown()
@@ -158,6 +169,8 @@ class TemperatureViewController: UIViewController {
         //convert from degree celsius
         var out = operate(op1: outA, op2: outB, add: tempOperation.isSelected)
         out = convertTo(unit: unitTo, op: out)
+        //round to 3 dec place
+        out = Double(round(1000*out)/1000)
         
         
         print("the output is \(out)\n")

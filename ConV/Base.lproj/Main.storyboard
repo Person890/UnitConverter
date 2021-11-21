@@ -26,20 +26,50 @@
             <point key="canvasLocation" x="-10" y="1498"/>
         </scene>
         <!--History-->
-        <scene sceneID="pDO-Xc-qRx">
+        <scene sceneID="nGy-bp-SLO">
             <objects>
-                <viewController id="28R-xM-nyc" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kei-PG-zbc">
+                <tableViewController id="152-wd-Zd9" customClass="HistoryViewController" customModule="ConV" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="BHP-wW-O4L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="edE-1X-n2K"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="History" id="etz-Ni-Txy"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uGy-IM-2kZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="dAb-W1-yJ1" userLabel="Cell">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dAb-W1-yJ1" id="2IU-sW-Bvd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conversion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z94-8d-gHk">
+                                            <rect key="frame" x="46" y="37" width="77" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJq-ee-3Ge">
+                                            <rect key="frame" x="20" y="11" width="41" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="152-wd-Zd9" id="yTO-63-t2C"/>
+                            <outlet property="delegate" destination="152-wd-Zd9" id="qty-JW-23O"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="7fN-QD-DCC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nyj-QI-Dly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="1498"/>
+            <point key="canvasLocation" x="895.6521739130435" y="1497.9910714285713"/>
         </scene>
         <!--Green View Controller-->
         <scene sceneID="thP-Sx-qVu">
@@ -54,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VG-pI-NW1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="1498"/>
+            <point key="canvasLocation" x="3451" y="1498"/>
         </scene>
         <!--Calculation-->
         <scene sceneID="qnI-nS-8H2">
@@ -197,7 +227,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="28R-xM-nyc" kind="relationship" relationship="rootViewController" id="n3H-L3-kO4"/>
+                        <segue destination="152-wd-Zd9" kind="relationship" relationship="rootViewController" id="Yxo-Io-4Y0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsF-Vw-WS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -513,15 +543,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Temperature" id="qbN-uQ-slI">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="cZ0-uw-xIJ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KbC-Sm-U4a">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KbC-Sm-U4a">
                                 <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="saveConversionWithSender:" destination="Ljl-Fa-zFc" eventType="touchUpInside" id="eXW-qc-2GE"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="save" destination="KbC-Sm-U4a" id="IOR-uS-WwC"/>
                         <outlet property="tempADropDown" destination="1TO-jO-tfo" id="4dJ-cJ-6tf"/>
                         <outlet property="tempAUnit" destination="i0A-l5-ffr" id="FxI-X5-hxN"/>
                         <outlet property="tempBDropDown" destination="QJy-yf-iqK" id="Sof-2V-Z9X"/>
@@ -809,11 +843,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Volume(imperial)" id="NZD-PT-rgM">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="V2w-3q-rjD">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HFk-kd-cPR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HFk-kd-cPR">
                                 <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="saveConversionWithSender:" destination="qtZ-IZ-xzE" eventType="touchUpInside" id="HuT-RI-qyk"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -825,6 +862,7 @@
                         <outlet property="VolumeOperation" destination="uBB-Zh-Aqd" id="6sW-1i-W9D"/>
                         <outlet property="VolumeOutDropDown" destination="wcE-0D-1tM" id="kba-Hn-cGo"/>
                         <outlet property="VolumeOutUnit" destination="iIQ-ic-yzY" id="wwS-OI-9av"/>
+                        <outlet property="save" destination="HFk-kd-cPR" id="yN8-b6-wSK"/>
                         <outlet property="volumeResultLabel" destination="LYg-Xc-76e" id="RHs-F7-KiC"/>
                         <outlet property="volumeTextA" destination="UJj-tq-Avv" id="dbM-Ld-d9W"/>
                         <outlet property="volumeTextB" destination="AEu-t9-tWN" id="D47-61-fGL"/>
@@ -1105,11 +1143,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Weight" id="Lbb-Gl-Qzw">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="Cm3-ji-Xxj">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="riF-2J-ywD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="riF-2J-ywD">
                                 <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="saveConversionWithSender:" destination="GhA-9T-yST" eventType="touchUpInside" id="QIE-Hf-eLa"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1124,6 +1165,7 @@
                         <outlet property="WeightResultLabel" destination="52z-Dx-qk2" id="ryc-DZ-Nch"/>
                         <outlet property="WeightTextA" destination="xX1-Ei-XZP" id="OE5-vg-8MX"/>
                         <outlet property="WeightTextB" destination="S4V-d0-IEj" id="wvT-fK-BFk"/>
+                        <outlet property="save" destination="riF-2J-ywD" id="eIk-ob-lbV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqQ-p6-7UK" sceneMemberID="firstResponder"/>
@@ -1401,11 +1443,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Speed" id="uVB-wz-iEZ">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="plain" id="PlR-f1-IE0">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dJg-QW-OhR">
-                                <rect key="frame" x="-33" y="-15" width="92" height="31"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="dJg-QW-OhR">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="saveConversionWithSender:" destination="0qQ-Qf-mIr" eventType="touchUpInside" id="i6R-aX-rYB"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1418,6 +1463,7 @@
                         <outlet property="outDropDown" destination="W4l-jr-BFp" id="eLf-q9-E1C"/>
                         <outlet property="outUnit" destination="H98-oM-th0" id="eJy-WP-Gz5"/>
                         <outlet property="resultLabel" destination="0U5-vZ-Jsg" id="mFS-Ay-uE5"/>
+                        <outlet property="save" destination="dJg-QW-OhR" id="Gxy-PE-mIA"/>
                         <outlet property="textA" destination="WNX-f6-ZdQ" id="ATU-to-50R"/>
                         <outlet property="textB" destination="2AI-hY-LJ4" id="eXu-OQ-foV"/>
                     </connections>
@@ -1705,6 +1751,9 @@
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveConversionWithSender:" destination="PFt-NB-P4f" eventType="touchUpInside" id="1oX-0y-ay4"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -1717,6 +1766,7 @@
                         <outlet property="outDropDown" destination="u58-hN-cg8" id="vb3-f8-mOL"/>
                         <outlet property="outUnit" destination="nvJ-hy-iWU" id="SXv-NQ-9qE"/>
                         <outlet property="resultLabel" destination="x5f-db-9gf" id="Z81-Dd-6k0"/>
+                        <outlet property="save" destination="Saq-lY-TOP" id="CRS-cd-1KF"/>
                         <outlet property="textA" destination="c0k-bn-DeH" id="MSU-cM-Nfm"/>
                         <outlet property="textB" destination="qWZ-b9-F4S" id="oYA-9f-hfv"/>
                     </connections>
@@ -1741,6 +1791,9 @@
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
