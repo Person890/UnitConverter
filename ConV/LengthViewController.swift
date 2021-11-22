@@ -58,6 +58,7 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         case yard
         case foot
         case inch
+        case null
         
         static let getAllUnits = [kilometer, meter, millimeter, mile, yard, foot, inch]
     }
@@ -141,6 +142,8 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         
     }
     @IBAction func operation(  sender: Any) {
+        
+        
         let tA = textA.text ?? ""
         let tB = textB.text ?? ""
         let varA = Double(tA) ?? 0.0
@@ -167,7 +170,7 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         case "inch":
             unitAFrom = .inch
         default:
-            break
+            unitAFrom = .null
         }
         switch bUnit.text{
         case "kilometer":
@@ -185,7 +188,7 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         case "inch":
             unitBFrom = .inch
         default:
-            break
+            unitBFrom = .null
         }
         switch outUnit.text{
         case "kilometer":
@@ -203,7 +206,13 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         case "inch":
             unitTo = .inch
         default:
-            break
+            unitTo = .null
+        }
+        
+        if (unitAFrom == DistanceUnit.null || unitBFrom == DistanceUnit.null) {
+            let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
         //convert to meter
@@ -237,6 +246,8 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             out = op*1609.344
         case .millimeter:
             out = op/1000
+        case .null:
+            out = 0.0;
         }
         print("conver from \(op) \(unit) to \(out) meter\n")
         return out
@@ -258,6 +269,8 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             out = op/1609.344
         case .millimeter:
             out = op*1000
+        case .null:
+            out = 0.0;
         }
         print("conver from \(op) meter to \(out) \(unit)\n")
         return out

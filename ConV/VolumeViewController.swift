@@ -276,8 +276,11 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         print("conver from \(op) cup to \(out) \(unit)\n")
         return out
     }
+    
     func operate(op1: Double, op2: Double, add: Bool) -> Double{
+        
         var out = 0.0
+        
         if(!add){
             out = op1 + op2
         }
@@ -286,7 +289,6 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         }
         return out
     }
-    
     
     /*
     @objc func didTapTopItem() {
