@@ -10,10 +10,16 @@ import UIKit
 class LengthTableViewController: UITableViewController {
     
     
-    var Formula = [
-        "1 km = 1000 m = 1000000 mm = 0.621 mile = 1093.61 yard = 3280.84 ft = 39370.1 in"
-    ]
 
+    var Formula:[[String]] = [
+        ["1 km: 1000 m"],
+        ["1 km: 1000000 mm"],
+        ["1 km: 0.621 mile"],
+        ["1 km: 1093.61 yard"],
+        ["1 km: 3280.84 ft"],
+        ["1 km: 39370.1 in"]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,15 +32,22 @@ class LengthTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Formula.count
+        return Formula.count;
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = Formula[indexPath.row]
-
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+        }
+        
+        print("\(#function) --- section = \(indexPath.section), row = \(indexPath.row)")
+        
+        cell!.textLabel?.text = Formula[indexPath.row][0]
+        
+        return cell!
     }
     
 
