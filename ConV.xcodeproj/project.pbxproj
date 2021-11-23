@@ -12,6 +12,7 @@
 		47071682274B0770009A8304 /* VolumeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47071681274B0770009A8304 /* VolumeTableViewController.swift */; };
 		47071684274B077E009A8304 /* WeightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47071683274B077E009A8304 /* WeightTableViewController.swift */; };
 		47071686274B078A009A8304 /* SpeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47071685274B078A009A8304 /* SpeedTableViewController.swift */; };
+		47127663274C6854003A083D /* SelfSizingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47127662274C6854003A083D /* SelfSizingTableViewCell.swift */; };
 		4720FF1C2723DB7A005DE682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4720FF1B2723DB7A005DE682 /* AppDelegate.swift */; };
 		4720FF1E2723DB7A005DE682 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4720FF1D2723DB7A005DE682 /* SceneDelegate.swift */; };
 		4720FF202723DB7A005DE682 /* LengthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4720FF1F2723DB7A005DE682 /* LengthViewController.swift */; };
@@ -68,6 +69,7 @@
 		47071681274B0770009A8304 /* VolumeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTableViewController.swift; sourceTree = "<group>"; };
 		47071683274B077E009A8304 /* WeightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewController.swift; sourceTree = "<group>"; };
 		47071685274B078A009A8304 /* SpeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTableViewController.swift; sourceTree = "<group>"; };
+		47127662274C6854003A083D /* SelfSizingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableViewCell.swift; sourceTree = "<group>"; };
 		4720FF182723DB7A005DE682 /* ConV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4720FF1B2723DB7A005DE682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4720FF1D2723DB7A005DE682 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				47F9BF6A2749D001000409DC /* HistoryViewController.swift */,
 				47F9BF6E2749E4EF000409DC /* HistoryTableViewCell.swift */,
 				47F9BF6C2749D1A8000409DC /* Conversion.swift */,
+				47127662274C6854003A083D /* SelfSizingTableViewCell.swift */,
 				47071676274B0699009A8304 /* Formula */,
 				4720FF212723DB7A005DE682 /* Main.storyboard */,
 				4720FF242723DB7B005DE682 /* Assets.xcassets */,
@@ -396,6 +399,7 @@
 				47071682274B0770009A8304 /* VolumeTableViewController.swift in Sources */,
 				4720FF1E2723DB7A005DE682 /* SceneDelegate.swift in Sources */,
 				47F9BF6B2749D001000409DC /* HistoryViewController.swift in Sources */,
+				47127663274C6854003A083D /* SelfSizingTableViewCell.swift in Sources */,
 				47F9BF6F2749E4EF000409DC /* HistoryTableViewCell.swift in Sources */,
 				47071684274B077E009A8304 /* WeightTableViewController.swift in Sources */,
 				47F9BF672748DF55000409DC /* WeightViewController.swift in Sources */,

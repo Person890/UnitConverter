@@ -50,6 +50,9 @@ class Conversion{
         conversion = "\(op1) \(unit1) \(operation) \(op2) \(unit2) = \(out) \(unitOut)"
         return conversion
     }
+    func getUnitOut() -> String {
+        return unitOut
+    }
     
     func getType() -> String {
         return type

@@ -26,12 +26,12 @@ class TemperatureViewController: UIViewController {
     
     var entry = Conversion()
     func createConversion(){
-        let newEntry = Conversion(type: "temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
+        let newEntry = Conversion(type: "Temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
         History.entries.append(entry)
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getType() != "null"{
+        if entry.getUnitOut() != "Unit"{
             print(entry.getConversion())
             print(History.entries.count)
             let alert = UIAlertController(title: "Success", message: "The temperature calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
@@ -55,6 +55,7 @@ class TemperatureViewController: UIViewController {
         case celsius
         case fahrenheit
         case kelvin
+        case null
         
         static let getAllUnits = [celsius, fahrenheit, kelvin]
     }
@@ -154,7 +155,7 @@ class TemperatureViewController: UIViewController {
         case "kelvin":
             unitAFrom = .kelvin
         default:
-            break
+            unitTo = .null
         }
         switch tempBUnit.text{
         case "celsius":
@@ -164,7 +165,7 @@ class TemperatureViewController: UIViewController {
         case "kelvin":
             unitBFrom = .kelvin
         default:
-            break
+            unitTo = .null
         }
         switch tempOutUnit.text{
         case "celsius":
@@ -174,11 +175,17 @@ class TemperatureViewController: UIViewController {
         case "kelvin":
             unitTo = .kelvin
         default:
-            break
+            unitTo = .null
+        }
+        
+        if (unitAFrom == TemperatureUnit.null || unitTo == TemperatureUnit.null) {
+            let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         //convert to degree celsius
         let outA = convertFrom(unit: unitAFrom, op: varA)
-        let outB = convertFrom(unit: unitBFrom, op: varB)
+        let outB = convertOp2From(unit: unitBFrom, op: varB)
         //convert from degree celsius
         var out = operate(op1: outA, op2: outB, add: tempOperation.isSelected)
         out = convertTo(unit: unitTo, op: out)
@@ -197,11 +204,28 @@ class TemperatureViewController: UIViewController {
         case .celsius:
             out = op
         case .fahrenheit:
-            out = (op - 32) * 5 / 9
+            out = (op-32) * 5 / 9
         case .kelvin:
-            out = op - 273.15
+            out = op-273.15
+        case .null:
+            out = 0.0
         }
-        print("conver from \(op) \(unit) to \(out) degree celsius\n")
+        print("conver from \(op) \(unit) to \(out) kelvin\n")
+        return out
+    }
+    func convertOp2From(unit: TemperatureUnit, op: Double) -> Double{
+        var out = 0.0
+        switch unit {
+        case .celsius:
+            out = op
+        case .fahrenheit:
+            out = op * 5 / 9
+        case .kelvin:
+            out = op
+        case .null:
+            out = 0.0
+        }
+        print("conver from \(op) kelvin to \(out) \(unit)\n")
         return out
     }
     func convertTo(unit: TemperatureUnit, op: Double) -> Double{
@@ -210,11 +234,13 @@ class TemperatureViewController: UIViewController {
         case .celsius:
             out = op
         case .fahrenheit:
-            out = op * 9 / 5 + 32
+            out = (op * 9 / 5)+32
         case .kelvin:
-            out = op + 273.15
+            out = op+273.15
+        case .null:
+            out = 0.0
         }
-        print("conver from \(op) degree celsius to \(out) \(unit)\n")
+        print("conver from \(op) kelvin to \(out) \(unit)\n")
         return out
     }
     func operate(op1: Double, op2: Double, add: Bool) -> Double{
