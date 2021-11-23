@@ -8,7 +8,18 @@
 import UIKit
 
 class VolumeTableViewController: UITableViewController {
-
+    
+    
+    var Formula:[[String]] = [
+        ["1 liter: 1000 milli liter"],
+        ["1 liter: 0.2199 imperial gallon"],
+        ["1 liter: 0.8798 imperial quart"],
+        ["1 liter: 1.7598 imperial pint"],
+        ["1 liter: 35.1951 imperial fluid ounce"],
+        ["1 liter: 56.3121 imperial tablespoon"],
+        ["1 liter: 168.936 imperial teaspoon"]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,14 +34,27 @@ class VolumeTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Formula.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+        }
+        
+        print("\(#function) --- section = \(indexPath.section), row = \(indexPath.row)")
+        
+        cell!.textLabel?.text = Formula[indexPath.row][0]
+        
+        return cell!
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

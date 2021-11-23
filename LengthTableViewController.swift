@@ -9,8 +9,6 @@ import UIKit
 
 class LengthTableViewController: UITableViewController {
     
-    
-
     var Formula:[[String]] = [
         ["1 km: 1000 m"],
         ["1 km: 1000000 mm"],

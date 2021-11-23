@@ -8,6 +8,12 @@
 import UIKit
 
 class SpeedTableViewController: UITableViewController {
+    
+    var Formula:[[String]] = [
+        ["1 Celsius = 274.15 Kelvin"],
+        ["1 Celsius = 33.8 Fahrenheit"],
+        ["1 Fahrenheit = 255.928 Kelvin"]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +34,23 @@ class SpeedTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Formula.count
     }
 
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier")
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellIdentifier")
+        }
+        
+        print("\(#function) --- section = \(indexPath.section), row = \(indexPath.row)")
+        
+        cell!.textLabel?.text = Formula[indexPath.row][0]
+        
+        return cell!
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

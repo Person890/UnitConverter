@@ -27,11 +27,11 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
     
     var entry = Conversion()
     func createConversion(){
-        let newEntry = Conversion(type: "Length", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
+        let newEntry = Conversion(type: "Speed", op1: textA.text!, op2: textB.text!, out: resultLabel.text!, add: operation.isSelected, unit1: aUnit.text!, unit2: bUnit.text!, unitOut: outUnit.text!)
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getType() != "null"{
+        if entry.getUnitOut() != "Unit"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
@@ -57,6 +57,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         case fps
         case mps
         case kph
+        case null
         
         static let getAllUnits = [mph, fps, mps, kph]
     }
@@ -160,7 +161,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         case "kilometer/hour":
             unitAFrom = .kph
         default:
-            break
+            unitAFrom = .null
         }
         switch bUnit.text{
         case "mile/hr":
@@ -172,7 +173,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         case "kilometer/hr":
             unitBFrom = .kph
         default:
-            break
+            unitBFrom = .null
         }
         switch outUnit.text{
         case "mile/hr":
@@ -184,7 +185,13 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         case "kilometer/hr":
             unitTo = .kph
         default:
-            break
+            unitTo = .null
+        }
+        
+        if (unitAFrom == SpeedUnit.null || unitTo == SpeedUnit.null) {
+            let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
         let outA = convertFrom(unit: unitAFrom, op: varA)
@@ -212,6 +219,8 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
             out = op
         case .kph:
             out = op/3.6
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) \(unit) to \(out) mps\n")
         return out
@@ -227,6 +236,8 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
             out = op
         case .kph:
             out = op*3.6
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) mps to \(out) \(unit)\n")
         return out

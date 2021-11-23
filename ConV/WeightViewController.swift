@@ -30,7 +30,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getType() != "null"{
+        if entry.getUnitOut() != "Unit"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
@@ -57,6 +57,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         case gram
         case pound
         case ounce
+        case null
         
         static let getAllUnits = [ton, kilogram, gram, pound, ounce]
     }
@@ -192,6 +193,12 @@ class WeightViewController: UIViewController, UITextViewDelegate {
             break
         }
         
+        if (unitAFrom == WeightUnit.null || unitTo == WeightUnit.null) {
+            let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         //convert to kg
         let outA = convertFrom(unit: unitAFrom, op: varA)
         let outB = convertFrom(unit: unitBFrom, op: varB)
@@ -219,6 +226,8 @@ class WeightViewController: UIViewController, UITextViewDelegate {
             out = op/2.205
         case .ounce:
             out = op/35.274
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) \(unit) to \(out) kg\n")
         return out
@@ -236,6 +245,8 @@ class WeightViewController: UIViewController, UITextViewDelegate {
             out = op*2.205
         case .ounce:
             out = op*35.274
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) kg to \(out) \(unit)\n")
         return out

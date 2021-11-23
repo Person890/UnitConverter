@@ -30,7 +30,7 @@ class LengthViewController: UIViewController, UITextViewDelegate {
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getType() != "null"{
+        if entry.getUnitOut() != "Unit"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
@@ -209,7 +209,7 @@ class LengthViewController: UIViewController, UITextViewDelegate {
             unitTo = .null
         }
         
-        if (unitAFrom == DistanceUnit.null || unitBFrom == DistanceUnit.null) {
+        if (unitAFrom == DistanceUnit.null || unitTo == DistanceUnit.null) {
             let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

@@ -27,11 +27,11 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
     
     var entry = Conversion()
     func createConversion(){
-        let newEntry = Conversion(type: "Volumeerature", op1: volumeTextA.text!, op2: volumeTextB.text!, out: volumeResultLabel.text!, add: VolumeOperation.isSelected, unit1: VolumeAUnit.text!, unit2: VolumeBUnit.text!, unitOut: VolumeOutUnit.text!)
+        let newEntry = Conversion(type: "Volume", op1: volumeTextA.text!, op2: volumeTextB.text!, out: volumeResultLabel.text!, add: VolumeOperation.isSelected, unit1: VolumeAUnit.text!, unit2: VolumeBUnit.text!, unitOut: VolumeOutUnit.text!)
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getType() != "null"{
+        if entry.getUnitOut() != "Unit"{
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
@@ -60,6 +60,7 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         case tablespoon
         case teaspoon
         case liter
+        case null
         
         static let getAllUnits = [gallon, quart, pint, cup, ounce, tablespoon, teaspoon, liter]
     }
@@ -170,7 +171,7 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         case "liter":
             unitAFrom = .liter
         default:
-            break
+            unitAFrom = .null
         }
         switch VolumeBUnit.text{
         case "liquid gallon":
@@ -190,7 +191,7 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         case "liter":
             unitBFrom = .liter
         default:
-            break
+            unitBFrom = .null
         }
         switch VolumeOutUnit.text{
         case "liquid gallon":
@@ -210,7 +211,13 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
         case "liter":
             unitTo = .liter
         default:
-            break
+            unitTo = .null
+        }
+        
+        if (unitAFrom == VolumeUnit.null || unitTo == VolumeUnit.null) {
+            let alert = UIAlertController(title: "Error", message: "Enter conversion unit", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
         //convert to cup
@@ -248,7 +255,8 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
             out = op/48
         case .liter:
             out = op*3.52
-            
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) \(unit) to \(out) cup\n")
         return out
@@ -272,6 +280,8 @@ class VolumeViewController: UIViewController, UITextViewDelegate {
             out = op*48
         case .liter:
             out = op/3.52
+        case .null:
+            out = 0.0
         }
         print("conver from \(op) cup to \(out) \(unit)\n")
         return out
