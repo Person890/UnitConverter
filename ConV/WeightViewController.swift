@@ -205,7 +205,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         var out = operate(op1: outA, op2: outB, add: WeightOperation.isSelected)
         //convert from kg
         out = convertTo(unit: unitTo, op: out)
-        //round to 3 dec place
+        //round to 5 dec place
         out = Double(round(100000*out)/100000)
         
         print("the output is \(out)\n")

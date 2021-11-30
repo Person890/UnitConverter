@@ -10,9 +10,9 @@ import UIKit
 class SpeedTableViewController: UITableViewController {
     
     var Formula:[[String]] = [
-        ["1 Celsius = 274.15 Kelvin"],
-        ["1 Celsius = 33.8 Fahrenheit"],
-        ["1 Fahrenheit = 255.928 Kelvin"]
+        ["1 m/sec = 2.2369 mile/hour"],
+        ["1 m/sec = 3.2808 foot/sec"],
+        ["1 m/sec = 3.6 km/hour"]
     ]
 
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class SpeedTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -198,7 +198,7 @@ class SpeedViewController: UIViewController, UITextViewDelegate {
         let outB = convertFrom(unit: unitBFrom, op: varB)
         var out = operate(op1: outA, op2: outB, add: operation.isSelected)
         out = convertTo(unit: unitTo, op: out)
-        //round to 3 dec place
+        //round to 5 dec place
         out = Double(round(100000*out)/100000)
         
         

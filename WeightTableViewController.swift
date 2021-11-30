@@ -10,9 +10,10 @@ import UIKit
 class WeightTableViewController: UITableViewController {
     
     var Formula:[[String]] = [
-        ["1 Celsius = 274.15 Kelvin"],
-        ["1 Celsius = 33.8 Fahrenheit"],
-        ["1 Fahrenheit = 255.928 Kelvin"]
+        ["1 Kilogram = 0.001 Ton"],
+        ["1 Kilogram = 1000 Gram"],
+        ["1 Kilogram = 2.2045 Pound"],
+        ["1 Kilogram = 35.274 Ounce"]
     ]
 
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class WeightTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
