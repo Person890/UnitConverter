@@ -27,11 +27,11 @@ class TemperatureViewController: UIViewController {
     var entry = Conversion()
     func createConversion(){
         let newEntry = Conversion(type: "Temperature", op1: tempTextA.text!, op2: tempTextB.text!, out: tempResultLabel.text!, add: tempOperation.isSelected, unit1: tempAUnit.text!, unit2: tempBUnit.text!, unitOut: tempOutUnit.text!)
-        History.entries.append(entry)
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getUnitOut() != "Unit"{
+        if entry.getUnitOut() != "Unit" && entry.getType() != "null" {
+            History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
             let alert = UIAlertController(title: "Success", message: "The temperature calculation was successully saved!", preferredStyle: UIAlertController.Style.alert)
@@ -190,7 +190,7 @@ class TemperatureViewController: UIViewController {
         var out = operate(op1: outA, op2: outB, add: tempOperation.isSelected)
         out = convertTo(unit: unitTo, op: out)
         //round to 3 dec place
-        out = Double(round(1000*out)/1000)
+        out = Double(round(100000*out)/100000)
         
         
         print("the output is \(out)\n")
@@ -210,7 +210,7 @@ class TemperatureViewController: UIViewController {
         case .null:
             out = 0.0
         }
-        print("conver from \(op) \(unit) to \(out) kelvin\n")
+        print("conver from \(op) \(unit) to \(out) celsius\n")
         return out
     }
     func convertOp2From(unit: TemperatureUnit, op: Double) -> Double{
@@ -225,7 +225,7 @@ class TemperatureViewController: UIViewController {
         case .null:
             out = 0.0
         }
-        print("conver from \(op) kelvin to \(out) \(unit)\n")
+        print("conver from \(op) celsius to \(out) \(unit)\n")
         return out
     }
     func convertTo(unit: TemperatureUnit, op: Double) -> Double{

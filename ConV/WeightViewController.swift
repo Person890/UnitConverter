@@ -30,7 +30,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         entry = newEntry
     }
     @IBAction func saveConversion(  sender:UIButton) {
-        if entry.getUnitOut() != "Unit"{
+        if entry.getUnitOut() != "Unit" && entry.getType() != "null" { 
             History.entries.append(entry)
             print(entry.getConversion())
             print(History.entries.count)
@@ -206,7 +206,7 @@ class WeightViewController: UIViewController, UITextViewDelegate {
         //convert from kg
         out = convertTo(unit: unitTo, op: out)
         //round to 3 dec place
-        out = Double(round(1000*out)/1000)
+        out = Double(round(100000*out)/100000)
         
         print("the output is \(out)\n")
         WeightResultLabel.text = "\(out)"
